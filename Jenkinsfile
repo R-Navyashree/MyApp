@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Run Application') {
             steps {
-                sh 'java -jar target/MyApp-1.0-SNAPSHOT.jar'
+                sh 'java -cp target/MyApp-1.0-SNAPSHOT.jar'
             }
         }
     }
