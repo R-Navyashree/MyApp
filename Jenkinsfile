@@ -1,13 +1,13 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven' // Replace with your desired Maven version
-         // Replace with your desired JDK version
+        maven 'Maven'   // Replace with your configured Maven name
+        jdk 'JDK'          // Replace with your configured JDK name
     }
     stages {
         stage('Checkout') {
             steps {
-                git branch : 'master' ,url :'https://github.com/R-Navyashree/MyApp.git'
+                git branch: 'master', url: 'https://github.com/R-Navyashree/MyApp.git'
             }
         }
         stage('Build') {
@@ -27,17 +27,16 @@ pipeline {
         }
         stage('Run Application') {
             steps {
-                
                 sh 'java -jar target/MyApp-1.0-SNAPSHOT.jar'
             }
         }
     }
-    post{
-    	success{
-    		echo 'Build and Depolyment Successfull'
-    	}
-    	failure{
-    		echo 'Build failed!
-    		}
-    	}
+    post {
+        success {
+            echo 'Build and Deployment Successful'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+    }
 }
